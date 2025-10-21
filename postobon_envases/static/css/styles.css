@@ -1,0 +1,243 @@
+/* ================================================
+   🌈 ESTILO GENERAL - SISTEMA POSTOBÓN PRO
+   ================================================ */
+body {
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #e8f0ff 0%, #ffffff 100%);
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 {
+  color: #0056b3;
+  font-weight: 700;
+}
+
+.container {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  max-width: 1200px;
+}
+
+/* ================================================
+   🧭 NAVBAR
+   ================================================ */
+.navbar {
+  background: linear-gradient(90deg, #0062cc, #0094ff);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #fff !important;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  transition: all 0.25s ease;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+/* ================================================
+   📊 TABLAS
+   ================================================ */
+.table {
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+  background: linear-gradient(90deg, #007bff, #00a2ff);
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.table-hover tbody tr {
+  transition: background-color 0.25s ease;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f2f7ff;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+  padding: 0.75rem 1rem;
+}
+
+/* ================================================
+   🧩 BOTONES
+   ================================================ */
+.btn {
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Colores personalizados coherentes con marca */
+.btn-primary {
+  background: linear-gradient(90deg, #007bff, #00a2ff);
+  border: none;
+}
+
+.btn-success {
+  background: linear-gradient(90deg, #28a745, #32c75e);
+  border: none;
+}
+
+.btn-warning {
+  background: linear-gradient(90deg, #ffca28, #ffd95b);
+  color: #212529;
+  border: none;
+}
+
+.btn-danger {
+  background: linear-gradient(90deg, #dc3545, #f45c5c);
+  border: none;
+}
+
+/* ================================================
+   🪟 MODALES
+   ================================================ */
+.modal-content {
+  border-radius: 18px;
+  border: none;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+  background: linear-gradient(90deg, #007bff, #00a2ff);
+  color: white;
+  border-bottom: none;
+  font-weight: 600;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+/* ================================================
+   🧠 FORMULARIOS
+   ================================================ */
+input.form-control, select.form-select {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  transition: box-shadow 0.2s ease;
+}
+
+input.form-control:focus, select.form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+/* ================================================
+   🖥️ TARJETAS Y PANELES
+   ================================================ */
+.card {
+  border-radius: 18px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ================================================
+   📱 RESPONSIVIDAD
+   ================================================ */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .table {
+    font-size: 14px;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  form {
+    text-align: center;
+  }
+}
+
+/* ================================================
+   ✨ DETALLES FINALES
+   ================================================ */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #6c757d;
+  background: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  margin-top: 50px;
+}
+
+footer span {
+  font-weight: 600;
+  color: #007bff;
+}
+
+::selection {
+  background: #007bff;
+  color: #fff;
+}
+
+/* ================================
+   🏠 ESTILO INICIO (INDEX)
+   ================================ */
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto;
+}
+
+.hover-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Iconos de Bootstrap */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");

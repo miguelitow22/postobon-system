@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Movimientos{% endblock %}
+{% block content %}
+<h2 class="fw-bold text-primary mb-3">Registro de Movimientos</h2>
+
+<!-- Formulario para registrar movimientos -->
+<form id="formMovimiento" class="row g-3 mb-4">
+  <div class="col-md-3">
+    <select id="id_envase" class="form-select" required>
+      <option value="" disabled selected>Selecciona un Envase</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <select id="tipo_movimiento" class="form-select" required>
+      <option value="" disabled selected>Tipo de movimiento</option>
+      <option value="Salida">Salida</option>
+      <option value="Devolucion">Devolución</option>
+      <option value="Transferencia">Transferencia</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <input type="text" class="form-control" id="origen_id" placeholder="Origen" required />
+  </div>
+  <div class="col-md-3">
+    <input type="text" class="form-control" id="destino_id" placeholder="Destino" required />
+  </div>
+  <div class="col-md-3">
+    <input type="text" class="form-control" id="operador" placeholder="Operador" required />
+  </div>
+  <div class="col-md-5">
+    <input type="text" class="form-control" id="observaciones" placeholder="Observaciones" />
+  </div>
+  <div class="col-md-2">
+    <button type="submit" class="btn btn-success w-100">Registrar</button>
+  </div>
+</form>
+
+<!-- Tabla de movimientos -->
+<table class="table table-striped table-hover" id="tablaMovimientos">
+  <thead class="table-primary">
+    <tr>
+      <th>ID</th>
+      <th>Envase</th>
+      <th>Tipo</th>
+      <th>Origen</th>
+      <th>Destino</th>
+      <th>Fecha</th>
+      <th>Operador</th>
+      <th>Observaciones</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script src="{{ url_for('static', filename='js/movimientos.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<div class="text-center mt-4">
+  <h1 class="display-5 fw-bold text-primary mb-3">
+    Sistema de Gestión y Trazabilidad de Envases Retornables - Postobón
+  </h1>
+  <p class="lead text-secondary mb-4">
+    Bienvenido, Miguel 👋 <br>
+    Controla, rastrea y optimiza el ciclo de vida de los envases desde aquí.
+  </p>
+</div>
+
+<div class="row justify-content-center g-4">
+  <!-- Tarjeta Envases -->
+  <div class="col-md-4 col-sm-6">
+    <div class="card shadow-sm border-0 h-100 hover-card">
+      <div class="card-body text-center">
+        <div class="icon-circle bg-primary text-white mb-3">
+          <i class="bi bi-bottle"></i>
+        </div>
+        <h5 class="fw-bold">Gestión de Envases</h5>
+        <p class="text-muted small">Crea, consulta y actualiza los envases retornables.</p>
+        <a href="/envases" class="btn btn-primary mt-2">Ir al módulo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tarjeta Lotes -->
+  <div class="col-md-4 col-sm-6">
+    <div class="card shadow-sm border-0 h-100 hover-card">
+      <div class="card-body text-center">
+        <div class="icon-circle bg-success text-white mb-3">
+          <i class="bi bi-box-seam"></i>
+        </div>
+        <h5 class="fw-bold">Gestión de Lotes</h5>
+        <p class="text-muted small">Administra los lotes y su estado logístico.</p>
+        <a href="/lotes" class="btn btn-success mt-2">Ir al módulo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tarjeta Movimientos -->
+  <div class="col-md-4 col-sm-6">
+    <div class="card shadow-sm border-0 h-100 hover-card">
+      <div class="card-body text-center">
+        <div class="icon-circle bg-warning text-white mb-3">
+          <i class="bi bi-arrow-left-right"></i>
+        </div>
+        <h5 class="fw-bold">Movimientos</h5>
+        <p class="text-muted small">Consulta los traslados y devoluciones en tiempo real.</p>
+        <a href="/movimientos" class="btn btn-warning mt-2">Ir al módulo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="mt-5">
+  <p class="text-center text-muted small mb-0">
+    © 2025 Sistema Postobón – Desarrollado con Flask, Bootstrap y ❤️ por Miguel.
+  </p>
+</footer>
+{% endblock %}
