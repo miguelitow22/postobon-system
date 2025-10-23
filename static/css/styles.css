@@ -1,7 +1,8 @@
 /* ============================================================
-   🌈 SISTEMA POSTOBÓN PRO+ - FORMULARIOS Y UI RESPONSIVOS 2025
+   🌈 SISTEMA POSTOBÓN PRO ULTRA UI 2025 - RESPONSIVE FINAL
    ============================================================ */
 
+/* Tipografía y fuentes */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
 
@@ -20,17 +21,18 @@
   --text-1: #2c3e50;
   --muted: #6c757d;
 
-  --radius-full: 9999px;
+  --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
 
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.15);
 
   --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --max-width: 1200px;
-  --gap: 1.25rem;
+  --gap: 1.5rem;
 }
 
 /* ============================================================
@@ -40,42 +42,67 @@
 
 body {
   font-family: "Poppins", system-ui, sans-serif;
-  background: linear-gradient(180deg, var(--bg-1) 0%, #fff 100%);
+  background: linear-gradient(180deg, var(--bg-1) 0%, #ffffff 100%);
   color: var(--text-1);
-  line-height: 1.6;
-  font-size: 15px;
+  line-height: 1.7;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
-  padding-bottom: 60px;
-}
-
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* ============================================================
-   🧭 NAVBAR
+   🧭 NAVBAR (Glass + Logo Iluminado)
    ============================================================ */
 .navbar {
-  background: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.8);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.3);
   box-shadow: var(--shadow-sm);
-  border-radius: 0 0 18px 18px;
-  padding: .8rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  border-radius: 0 0 20px 20px;
+  padding: 1rem 1.5rem;
   position: sticky;
   top: 0;
   z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeDown 0.5s ease-in-out;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .navbar-brand {
   font-weight: 800;
-  color: var(--primary-600);
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: .6rem;
+  color: var(--primary-600);
+  transition: var(--transition);
+  text-shadow: 0 0 10px rgba(0,123,255,0.5);
+}
+
+.navbar-brand:hover {
+  color: var(--primary-500);
+  text-shadow: 0 0 15px rgba(0,162,255,0.8);
+  transform: scale(1.05);
+}
+
+.nav-link {
+  color: var(--text-1);
+  font-weight: 600;
+  transition: var(--transition);
+  margin-left: 1rem;
+}
+.nav-link:hover {
+  color: var(--primary-600);
+  transform: translateY(-2px);
 }
 
 /* ============================================================
@@ -86,80 +113,96 @@ body {
   align-items: center;
   justify-content: center;
   gap: .5rem;
-  padding: .9rem 1.6rem;
-  border: none;
+  padding: 1rem 1.8rem;
   font-weight: 700;
+  border: none;
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-sm);
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
   transition: var(--transition);
   position: relative;
   overflow: hidden;
 }
-.btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: var(--shadow-md); }
-.btn:active { transform: scale(0.97); }
 
-/* Ondulación al click */
+.btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Efecto de onda al click */
 .btn::after {
   content: '';
   position: absolute;
-  width: 300%;
-  height: 300%;
+  width: 250%;
+  height: 250%;
   top: 50%;
   left: 50%;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.6s ease;
   opacity: 0;
 }
-.btn:active::after { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+.btn:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
 
-/* Variantes */
 .btn-primary { background: var(--brand-1); color: #fff; }
 .btn-success { background: var(--success-1); color: #fff; }
-.btn-warning { background: var(--warning-1); color: #1a1a1a; }
+.btn-warning { background: var(--warning-1); color: #222; }
 .btn-danger  { background: var(--danger-1); color: #fff; }
 
 /* ============================================================
-   🧾 FORMULARIOS ULTRA MODERNOS
+   🧾 FORMULARIOS ESPACIOSOS Y RESPONSIVOS
    ============================================================ */
 .form-section {
   background: #fff;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  padding: 2rem;
-  margin-bottom: 2rem;
-  transition: var(--transition);
+  padding: 2.5rem;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 900px;
 }
-.form-section:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+
+.form-section h2 {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-600);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem 2rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: .45rem;
-  margin-bottom: 1.5rem;
+  gap: .5rem;
 }
 
 .form-label {
   font-weight: 600;
   color: #374151;
   font-size: .95rem;
-  letter-spacing: .3px;
 }
 
 input.form-control,
 select.form-select,
 textarea.form-control {
   width: 100%;
-  padding: 0.95rem 1.15rem;
-  border-radius: var(--radius-md);
-  border: 2px solid #e5e9f0;
-  background: rgba(255,255,255,0.95);
+  padding: 1rem 1.25rem;
   font-size: 1rem;
+  border: 2px solid #e0e6ef;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.95);
   transition: var(--transition);
 }
 
@@ -171,70 +214,92 @@ textarea.form-control:focus {
   outline: none;
 }
 
-textarea.form-control {
-  resize: vertical;
-  min-height: 120px;
-}
-
-/* Organización visual del formulario */
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem 1.5rem;
-}
-
-/* Mejora en visualización de información */
-.info-card {
-  background: rgba(255,255,255,0.9);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-}
-.info-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
+textarea.form-control { min-height: 120px; resize: vertical; }
 
 /* ============================================================
-   🧱 CARDS Y SECCIONES
+   💡 TARJETAS Y PRESENTACIÓN DE INFORMACIÓN
    ============================================================ */
 .card {
-  background: #fff;
+  background: rgba(255,255,255,0.95);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
   overflow: hidden;
+  backdrop-filter: blur(8px);
+  margin-bottom: 2rem;
 }
-.card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-.card-body { padding: 1.5rem; }
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.card-body { padding: 2rem; }
 
 /* ============================================================
-   📱 RESPONSIVIDAD COMPLETA
+   💫 FOOTER FIJO Y ORGANIZADO
    ============================================================ */
-@media (max-width: 767.98px) {
-  .container { padding: 1rem; }
-  .form-section { padding: 1.25rem; }
-  .form-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .btn { width: 100%; margin-bottom: .8rem; }
-  input.form-control, select.form-select, textarea.form-control { font-size: .95rem; padding: .85rem 1rem; }
-  .form-label { font-size: .9rem; }
+footer {
+  background: #fafcff;
+  border-top: 1px solid #e0e6ef;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-size: .95rem;
+  color: var(--muted);
+  margin-top: auto;
 }
 
-@media (min-width: 1200px) {
-  .form-section { padding: 2.5rem 3rem; }
-  .card { border-radius: 20px; }
+footer span {
+  font-weight: 700;
+  color: var(--primary-600);
+  transition: var(--transition);
+}
+
+footer span:hover {
+  color: var(--primary-500);
+  text-shadow: 0 0 8px rgba(0,162,255,0.4);
+}
+
+/* ============================================================
+   📱 RESPONSIVIDAD TOTAL
+   ============================================================ */
+@media (max-width: 768px) {
+  body { font-size: 15px; }
+
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .navbar-brand { font-size: 1.25rem; margin-bottom: .4rem; }
+
+  .form-section {
+    padding: 1.75rem 1.25rem;
+    margin: 1rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: .8rem;
+  }
+
+  .card-body { padding: 1.25rem; }
+
+  footer { padding: 1rem; font-size: .9rem; }
 }
 
 /* ============================================================
    ♿ ACCESIBILIDAD Y DETALLES
    ============================================================ */
 ::selection { background: var(--primary-600); color: #fff; }
+
 :focus-visible {
   outline: none;
   box-shadow: 0 0 0 4px rgba(0,123,255,0.25);
   border-radius: var(--radius-md);
 }
+
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
+  * { transition: none !important; animation: none !important; }
 }
