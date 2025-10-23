@@ -1,8 +1,7 @@
 /* ============================================================
-   🌈 SISTEMA POSTOBÓN PRO - CSS ULTRA RESPONSIVO 2025 (FINAL)
+   🌈 SISTEMA POSTOBÓN PRO+ - FORMULARIOS Y UI RESPONSIVOS 2025
    ============================================================ */
 
-/* Tipografía moderna */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
 
@@ -16,17 +15,22 @@
   --success-1: linear-gradient(135deg, #28a745, #32c75e);
   --warning-1: linear-gradient(135deg, #ffca28, #ffd95b);
   --danger-1: linear-gradient(135deg, #dc3545, #f45c5c);
-  --bg-1: #e8f0ff;
+
+  --bg-1: #eef4ff;
   --text-1: #2c3e50;
   --muted: #6c757d;
+
   --radius-full: 9999px;
+  --radius-md: 12px;
   --radius-lg: 18px;
+
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.10);
+  --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
-  --max-width: 1200px;
-  --gap: 1rem;
+
   --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --max-width: 1200px;
+  --gap: 1.25rem;
 }
 
 /* ============================================================
@@ -38,15 +42,12 @@ body {
   font-family: "Poppins", system-ui, sans-serif;
   background: linear-gradient(180deg, var(--bg-1) 0%, #fff 100%);
   color: var(--text-1);
-  line-height: 1.5;
+  line-height: 1.6;
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
   padding-bottom: 60px;
 }
-
-h1,h2,h3,h4 { color: var(--primary-600); font-weight: 700; margin-bottom: .5rem; }
-p { color: var(--muted); margin-bottom: .75rem; }
 
 .container {
   max-width: var(--max-width);
@@ -55,7 +56,7 @@ p { color: var(--muted); margin-bottom: .75rem; }
 }
 
 /* ============================================================
-   🧭 NAVBAR GLASMORPHISM
+   🧭 NAVBAR
    ============================================================ */
 .navbar {
   background: rgba(255,255,255,0.75);
@@ -67,25 +68,25 @@ p { color: var(--muted); margin-bottom: .75rem; }
   position: sticky;
   top: 0;
   z-index: 999;
-  animation: fadeInNav 0.5s ease-in-out;
 }
-@keyframes fadeInNav {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+
+.navbar-brand {
+  font-weight: 800;
+  color: var(--primary-600);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
 }
-.navbar-brand { font-weight: 800; color: var(--primary-600); display: flex; align-items: center; gap: .5rem; }
-.nav-link { font-weight: 600; color: var(--text-1); transition: var(--transition); }
-.nav-link:hover { color: var(--primary-600); transform: translateY(-2px); }
 
 /* ============================================================
-   🎯 BOTONES REDONDOS Y ANIMADOS
+   🎯 BOTONES REDONDOS
    ============================================================ */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: .5rem;
-  padding: .85rem 1.5rem;
+  padding: .9rem 1.6rem;
   border: none;
   font-weight: 700;
   border-radius: var(--radius-full);
@@ -95,15 +96,8 @@ p { color: var(--muted); margin-bottom: .75rem; }
   position: relative;
   overflow: hidden;
 }
-
-.btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: var(--shadow-lg);
-}
-
-.btn:active {
-  transform: scale(0.97);
-}
+.btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: var(--shadow-md); }
+.btn:active { transform: scale(0.97); }
 
 /* Ondulación al click */
 .btn::after {
@@ -113,16 +107,13 @@ p { color: var(--muted); margin-bottom: .75rem; }
   height: 300%;
   top: 50%;
   left: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0.5s ease, opacity 0.5s ease;
   opacity: 0;
 }
-.btn:active::after {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
-}
+.btn:active::after { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 
 /* Variantes */
 .btn-primary { background: var(--brand-1); color: #fff; }
@@ -131,116 +122,107 @@ p { color: var(--muted); margin-bottom: .75rem; }
 .btn-danger  { background: var(--danger-1); color: #fff; }
 
 /* ============================================================
-   🧾 TABLAS
+   🧾 FORMULARIOS ULTRA MODERNOS
    ============================================================ */
-.table {
-  width: 100%;
-  border-collapse: separate;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+.form-section {
   background: #fff;
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: var(--transition);
 }
-.table thead {
-  background: var(--brand-1);
-  color: #fff;
-  text-transform: uppercase;
-  font-size: .78rem;
-  letter-spacing: .4px;
+.form-section:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
-.table td, .table th {
-  padding: .75rem 1rem;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #374151;
   font-size: .95rem;
+  letter-spacing: .3px;
 }
-.table-hover tbody tr:hover {
-  background-color: #f2f7ff;
-  transform: scale(1.01);
+
+input.form-control,
+select.form-select,
+textarea.form-control {
+  width: 100%;
+  padding: 0.95rem 1.15rem;
+  border-radius: var(--radius-md);
+  border: 2px solid #e5e9f0;
+  background: rgba(255,255,255,0.95);
+  font-size: 1rem;
   transition: var(--transition);
 }
 
-/* ============================================================
-   🧰 FORMULARIOS
-   ============================================================ */
-input.form-control, select.form-select, textarea.form-control {
-  width: 100%;
-  padding: .8rem 1rem;
-  border-radius: var(--radius-full);
-  border: 2px solid #e0e6ef;
-  transition: var(--transition);
-  background: rgba(255,255,255,0.9);
-}
-input.form-control:focus, select.form-select:focus, textarea.form-control:focus {
-  border-color: var(--primary-600);
-  box-shadow: 0 0 0 4px rgba(0,123,255,0.12);
+input.form-control:focus,
+select.form-select:focus,
+textarea.form-control:focus {
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 4px rgba(0,123,255,0.1);
   outline: none;
 }
 
-/* ============================================================
-   🧱 CARDS 3D
-   ============================================================ */
-.card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  transition: var(--transition);
-  overflow: hidden;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.3);
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
 }
-.card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: var(--shadow-lg);
-}
-.card-body { padding: 1.25rem; }
 
-/* ============================================================
-   💫 ICONOS Y EFECTOS
-   ============================================================ */
-.icon-circle {
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  color: white;
-  background: var(--brand-1);
+/* Organización visual del formulario */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem 1.5rem;
+}
+
+/* Mejora en visualización de información */
+.info-card {
+  background: rgba(255,255,255,0.9);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
 }
-.icon-circle:hover {
-  transform: scale(1.1);
+.info-card:hover {
+  transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 
 /* ============================================================
-   💡 FOOTER
+   🧱 CARDS Y SECCIONES
    ============================================================ */
-footer {
-  text-align: center;
-  padding: 20px;
-  font-size: .9rem;
-  color: var(--muted);
-  background: #fafcff;
-  border-top: 1px solid #eef2fa;
-  margin-top: 40px;
+.card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  overflow: hidden;
 }
-footer span { font-weight: 700; color: var(--primary-600); }
+.card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.card-body { padding: 1.5rem; }
 
 /* ============================================================
-   📱 RESPONSIVIDAD
+   📱 RESPONSIVIDAD COMPLETA
    ============================================================ */
 @media (max-width: 767.98px) {
-  h2 { font-size: 1.25rem; text-align: center; }
-  .btn { width: 100%; margin-bottom: .6rem; }
-  .navbar { border-radius: 0; }
-  .icon-circle { width: 54px; height: 54px; font-size: 1.4rem; }
-  .card-body { padding: 1rem; }
-  .table td, .table th { padding: .6rem; font-size: .9rem; }
+  .container { padding: 1rem; }
+  .form-section { padding: 1.25rem; }
+  .form-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .btn { width: 100%; margin-bottom: .8rem; }
+  input.form-control, select.form-select, textarea.form-control { font-size: .95rem; padding: .85rem 1rem; }
+  .form-label { font-size: .9rem; }
 }
 
 @media (min-width: 1200px) {
+  .form-section { padding: 2.5rem 3rem; }
   .card { border-radius: 20px; }
 }
 
@@ -248,13 +230,11 @@ footer span { font-weight: 700; color: var(--primary-600); }
    ♿ ACCESIBILIDAD Y DETALLES
    ============================================================ */
 ::selection { background: var(--primary-600); color: #fff; }
-
 :focus-visible {
   outline: none;
   box-shadow: 0 0 0 4px rgba(0,123,255,0.25);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-md);
 }
-
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
