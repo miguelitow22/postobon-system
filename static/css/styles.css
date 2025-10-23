@@ -262,6 +262,7 @@ input.form-control:focus, select.form-select:focus, textarea.form-control:focus 
 .gradient-text {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   font-weight: 700;
 }
