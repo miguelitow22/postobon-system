@@ -1,71 +1,104 @@
 {% extends "base.html" %}
 {% block title %}Lotes{% endblock %}
 {% block content %}
-<h2 class="fw-bold text-primary mb-3">Gestión de Lotes</h2>
 
-<form id="formLote" class="row g-3 mb-4">
-  <div class="col-md-3">
-    <input type="text" class="form-control" id="id_lote" placeholder="ID Lote" required />
-  </div>
-  <div class="col-md-4">
-    <input type="text" class="form-control" id="punto_origen_id" placeholder="Punto de origen" required />
-  </div>
-  <div class="col-md-3">
-    <select id="estado" class="form-select">
-      <option value="Pendiente">Pendiente</option>
-      <option value="Enviado">Enviado</option>
-      <option value="Cerrado">Cerrado</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <button type="submit" class="btn btn-success w-100">Agregar Lote</button>
-  </div>
-</form>
+<!-- Header con animación -->
+<div class="header-section animate-fade-in mb-4">
+    <h2 class="gradient-text text-center fw-bold">Gestión de Lotes</h2>
+    <p class="text-muted text-center">Administra y rastrea los lotes de envases</p>
+</div>
 
-<table class="table table-striped table-hover" id="tablaLotes">
-  <thead class="table-primary">
-    <tr>
-      <th>ID Lote</th>
-      <th>Fecha salida</th>
-      <th>Punto Origen</th>
-      <th>Estado</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-<!-- Modal de Edición -->
-<div class="modal fade" id="modalEditarLote" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Editar Lote</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <form id="formEditarLote">
-          <div class="mb-3">
-            <label>ID Lote</label>
-            <input type="text" id="edit_id_lote" class="form-control" readonly />
-          </div>
-          <div class="mb-3">
-            <label>Punto Origen</label>
-            <input type="text" id="edit_punto_origen_id" class="form-control" />
-          </div>
-          <div class="mb-3">
-            <label>Estado</label>
-            <select id="edit_estado" class="form-select">
-              <option value="Pendiente">Pendiente</option>
-              <option value="Enviado">Enviado</option>
-              <option value="Cerrado">Cerrado</option>
-            </select>
-          </div>
-          <button class="btn btn-primary w-100">Guardar cambios</button>
+<!-- Formulario con glassmorphism -->
+<div class="card glass-effect mb-4 animate-scale-in">
+    <div class="card-body">
+        <form id="formLote" class="row g-3">
+            <div class="col-md-3">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="id_lote" placeholder="ID Lote" required />
+                    <label for="id_lote"><i class="bi bi-upc-scan me-2"></i>ID Lote</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="punto_origen_id" placeholder="Punto de origen" required />
+                    <label for="punto_origen_id"><i class="bi bi-geo-alt me-2"></i>Punto de origen</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-floating">
+                    <select id="estado" class="form-select">
+                        <option value="Pendiente">⏳ Pendiente</option>
+                        <option value="Enviado">🚚 Enviado</option>
+                        <option value="Cerrado">✅ Cerrado</option>
+                    </select>
+                    <label for="estado"><i class="bi bi-flag me-2"></i>Estado</label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-success w-100 h-100">
+                    <i class="bi bi-plus-circle me-2"></i>Agregar Lote
+                </button>
+            </div>
         </form>
-      </div>
     </div>
-  </div>
+</div>
+
+<!-- Tabla Mejorada -->
+<div class="table-container animate-fade-in">
+    <div class="table-responsive">
+        <table class="table" id="tablaLotes">
+            <thead>
+                <tr>
+                    <th><i class="bi bi-upc me-2"></i>ID Lote</th>
+                    <th><i class="bi bi-calendar-event me-2"></i>Fecha salida</th>
+                    <th><i class="bi bi-geo-alt me-2"></i>Punto Origen</th>
+                    <th><i class="bi bi-flag me-2"></i>Estado</th>
+                    <th><i class="bi bi-gear me-2"></i>Acciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal de Edición Mejorado -->
+<div class="modal fade" id="modalEditarLote" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content glass-effect">
+            <div class="modal-header border-0">
+                <h5 class="modal-title gradient-text">
+                    <i class="bi bi-pencil-square me-2"></i>Editar Lote
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formEditarLote">
+                    <div class="form-floating mb-3">
+                        <input type="text" id="edit_id_lote" class="form-control" readonly />
+                        <label for="edit_id_lote"><i class="bi bi-upc me-2"></i>ID Lote</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" id="edit_punto_origen_id" class="form-control" />
+                        <label for="edit_punto_origen_id"><i class="bi bi-geo-alt me-2"></i>Punto Origen</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select id="edit_estado" class="form-select">
+                            <option value="Pendiente">⏳ Pendiente</option>
+                            <option value="Enviado">🚚 Enviado</option>
+                            <option value="Cerrado">✅ Cerrado</option>
+                        </select>
+                        <label for="edit_estado"><i class="bi bi-flag me-2"></i>Estado</label>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-check2-circle me-2"></i>Guardar cambios
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="{{ url_for('static', filename='js/lotes.js') }}"></script>

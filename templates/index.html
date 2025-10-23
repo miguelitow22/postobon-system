@@ -1,63 +1,81 @@
 {% extends "base.html" %}
 {% block title %}Inicio{% endblock %}
 {% block content %}
-<div class="text-center mt-4">
-  <h1 class="display-5 fw-bold text-primary mb-3">
-    Sistema de Gestión y Trazabilidad de Envases Retornables - Postobón
-  </h1>
-  <p class="lead text-secondary mb-4">
-    Bienvenido, Miguel 👋 <br>
-    Controla, rastrea y optimiza el ciclo de vida de los envases desde aquí.
-  </p>
+
+<!-- Header con animación mejorada -->
+<div class="text-center mt-4 animate-fade-in">
+    <h1 class="display-5 fw-bold gradient-text mb-3">
+        Sistema de Gestión y Trazabilidad
+        <span class="d-block mt-2">Envases Retornables Postobón</span>
+    </h1>
+    <p class="lead text-muted mb-5">
+        Bienvenido, Miguel <span class="wave-animation">👋</span><br>
+        <span class="opacity-75">Controla, rastrea y optimiza el ciclo de vida de los envases desde aquí.</span>
+    </p>
 </div>
 
+<!-- Cards con animación escalonada -->
 <div class="row justify-content-center g-4">
-  <!-- Tarjeta Envases -->
-  <div class="col-md-4 col-sm-6">
-    <div class="card shadow-sm border-0 h-100 hover-card">
-      <div class="card-body text-center">
-        <div class="icon-circle bg-primary text-white mb-3">
-          <i class="bi bi-bottle"></i>
+    <!-- Tarjeta Envases -->
+    <div class="col-md-4 col-sm-6 animate-slide-up" style="--delay: 0.1s">
+        <div class="card glass-effect h-100 hover-card">
+            <div class="card-body text-center p-4">
+                <div class="icon-circle bg-gradient-primary text-white mb-4 mx-auto">
+                    <i class="bi bi-bottle"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Gestión de Envases</h5>
+                <p class="text-muted mb-4">Crea, consulta y actualiza los envases retornables en tiempo real.</p>
+                <a href="/envases" class="btn btn-primary w-100">
+                    <i class="bi bi-arrow-right-circle me-2"></i>Ir al módulo
+                </a>
+            </div>
         </div>
-        <h5 class="fw-bold">Gestión de Envases</h5>
-        <p class="text-muted small">Crea, consulta y actualiza los envases retornables.</p>
-        <a href="/envases" class="btn btn-primary mt-2">Ir al módulo</a>
-      </div>
     </div>
-  </div>
 
-  <!-- Tarjeta Lotes -->
-  <div class="col-md-4 col-sm-6">
-    <div class="card shadow-sm border-0 h-100 hover-card">
-      <div class="card-body text-center">
-        <div class="icon-circle bg-success text-white mb-3">
-          <i class="bi bi-box-seam"></i>
+    <!-- Tarjeta Lotes -->
+    <div class="col-md-4 col-sm-6 animate-slide-up" style="--delay: 0.2s">
+        <div class="card glass-effect h-100 hover-card">
+            <div class="card-body text-center p-4">
+                <div class="icon-circle bg-gradient-success text-white mb-4 mx-auto">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Gestión de Lotes</h5>
+                <p class="text-muted mb-4">Administra los lotes y su estado logístico de manera eficiente.</p>
+                <a href="/lotes" class="btn btn-success w-100">
+                    <i class="bi bi-arrow-right-circle me-2"></i>Ir al módulo
+                </a>
+            </div>
         </div>
-        <h5 class="fw-bold">Gestión de Lotes</h5>
-        <p class="text-muted small">Administra los lotes y su estado logístico.</p>
-        <a href="/lotes" class="btn btn-success mt-2">Ir al módulo</a>
-      </div>
     </div>
-  </div>
 
-  <!-- Tarjeta Movimientos -->
-  <div class="col-md-4 col-sm-6">
-    <div class="card shadow-sm border-0 h-100 hover-card">
-      <div class="card-body text-center">
-        <div class="icon-circle bg-warning text-white mb-3">
-          <i class="bi bi-arrow-left-right"></i>
+    <!-- Tarjeta Movimientos -->
+    <div class="col-md-4 col-sm-6 animate-slide-up" style="--delay: 0.3s">
+        <div class="card glass-effect h-100 hover-card">
+            <div class="card-body text-center p-4">
+                <div class="icon-circle bg-gradient-warning text-white mb-4 mx-auto">
+                    <i class="bi bi-arrow-left-right"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Movimientos</h5>
+                <p class="text-muted mb-4">Consulta los traslados y devoluciones con seguimiento en tiempo real.</p>
+                <a href="/movimientos" class="btn btn-warning w-100">
+                    <i class="bi bi-arrow-right-circle me-2"></i>Ir al módulo
+                </a>
+            </div>
         </div>
-        <h5 class="fw-bold">Movimientos</h5>
-        <p class="text-muted small">Consulta los traslados y devoluciones en tiempo real.</p>
-        <a href="/movimientos" class="btn btn-warning mt-2">Ir al módulo</a>
-      </div>
     </div>
-  </div>
 </div>
 
-<footer class="mt-5">
-  <p class="text-center text-muted small mb-0">
-    © 2025 Sistema Postobón – Desarrollado con Flask, Bootstrap y ❤️ por Miguel.
-  </p>
+<!-- Footer mejorado -->
+<footer class="mt-5 pt-5">
+    <div class="text-center text-muted">
+        <p class="small mb-0">
+            © 2025 Sistema Postobón 
+            <span class="mx-2">•</span> 
+            Desarrollado con 
+            <i class="bi bi-heart-fill text-danger mx-1"></i> 
+            por Miguel
+        </p>
+    </div>
 </footer>
+
 {% endblock %}

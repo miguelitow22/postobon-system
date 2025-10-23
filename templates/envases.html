@@ -1,102 +1,146 @@
 {% extends "base.html" %}
 {% block title %}Envases{% endblock %}
 {% block content %}
-<h2 class="fw-bold text-primary mb-4 text-center">Gestión de Envases</h2>
 
-<!-- Filtros -->
-<div class="row mb-3">
-  <div class="col-md-3">
-    <select id="filtroTipo" class="form-select">
-      <option value="">Filtrar por tipo</option>
-      <option value="PET">PET</option>
-      <option value="VIDRIO">VIDRIO</option>
-    </select>
-  </div>
-  <div class="col-md-3">
-    <select id="filtroEstado" class="form-select">
-      <option value="">Filtrar por estado</option>
-      <option value="EnPlanta">En Planta</option>
-      <option value="EnVenta">En Venta</option>
-      <option value="Devuelto">Devuelto</option>
-      <option value="EnReciclaje">En Reciclaje</option>
-    </select>
-  </div>
-  <div class="col-md-6 text-end">
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNuevo">+ Nuevo Envase</button>
-  </div>
+<!-- Header con animación -->
+<div class="header-section animate-fade-in mb-4">
+    <h2 class="gradient-text text-center fw-bold">Gestión de Envases</h2>
+    <p class="text-muted text-center">Administra el inventario de envases retornables</p>
 </div>
 
-<!-- Tabla -->
-<div class="table-responsive">
-  <table class="table table-bordered table-striped text-center align-middle" id="tablaEnvases">
-    <thead class="table-primary">
-      <tr>
-        <th>ID</th>
-        <th>Tipo</th>
-        <th>Capacidad (ml)</th>
-        <th>Estado</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+<!-- Filtros y Acciones -->
+<div class="card glass-effect mb-4 animate-scale-in">
+    <div class="card-body">
+        <div class="row g-3 align-items-center">
+            <div class="col-12 col-md-3">
+                <select id="filtroTipo" class="form-select">
+                    <option value="">🔍 Filtrar por tipo</option>
+                    <option value="PET">🔵 PET</option>
+                    <option value="VIDRIO">✨ VIDRIO</option>
+                </select>
+            </div>
+            <div class="col-12 col-md-3">
+                <select id="filtroEstado" class="form-select">
+                    <option value="">🔍 Filtrar por estado</option>
+                    <option value="EnPlanta">🏭 En Planta</option>
+                    <option value="EnVenta">🚚 En Venta</option>
+                    <option value="Devuelto">↩️ Devuelto</option>
+                    <option value="EnReciclaje">♻️ En Reciclaje</option>
+                </select>
+            </div>
+            <div class="col-12 col-md-6 text-md-end">
+                <button class="btn btn-primary w-100 w-md-auto" data-bs-toggle="modal" data-bs-target="#modalNuevo">
+                    <i class="bi bi-plus-circle me-2"></i>Nuevo Envase
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabla Mejorada -->
+<div class="table-container animate-fade-in">
+    <div class="table-responsive">
+        <table class="table" id="tablaEnvases">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Capacidad</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 </div>
 
 <!-- Modal Nuevo Envase -->
 <div class="modal fade" id="modalNuevo" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title">Agregar Envase</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <form id="formEnvase">
-        <div class="modal-body">
-          <input type="text" id="id_envase" class="form-control mb-3" placeholder="ID Envase" required>
-          <select id="tipo" class="form-select mb-3" required>
-            <option value="" selected disabled>Tipo</option>
-            <option value="PET">PET</option>
-            <option value="VIDRIO">VIDRIO</option>
-          </select>
-          <input type="number" id="capacidad_ml" class="form-control mb-3" placeholder="Capacidad (ml)" required>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content glass-effect">
+            <div class="modal-header border-0">
+                <h5 class="modal-title gradient-text">
+                    <i class="bi bi-plus-circle me-2"></i>Nuevo Envase
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form id="formEnvase" class="needs-validation" novalidate>
+                <div class="modal-body">
+                    <div class="form-floating mb-3">
+                        <input type="text" id="id_envase" class="form-control" placeholder="ID Envase" required>
+                        <label for="id_envase">ID Envase</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select id="tipo" class="form-select" required>
+                            <option value="" selected disabled>Seleccione tipo</option>
+                            <option value="PET">🔵 PET</option>
+                            <option value="VIDRIO">✨ VIDRIO</option>
+                        </select>
+                        <label for="tipo">Tipo de Envase</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="number" id="capacidad_ml" class="form-control" placeholder="Capacidad" required>
+                        <label for="capacidad_ml">Capacidad (ml)</label>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-check2-circle me-2"></i>Guardar
+                    </button>
+                </div>
+            </form>
         </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Guardar</button>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
 
 <!-- Modal Editar Envase -->
 <div class="modal fade" id="modalEditar" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-warning text-dark">
-        <h5 class="modal-title">Editar Envase</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <form id="formEditar">
-        <div class="modal-body">
-          <input type="text" id="edit_id_envase" class="form-control mb-3" readonly>
-          <select id="edit_tipo" class="form-select mb-3">
-            <option value="PET">PET</option>
-            <option value="VIDRIO">VIDRIO</option>
-          </select>
-          <input type="number" id="edit_capacidad_ml" class="form-control mb-3">
-          <select id="edit_estado" class="form-select">
-            <option value="EnPlanta">En Planta</option>
-            <option value="EnVenta">En Venta</option>
-            <option value="Devuelto">Devuelto</option>
-            <option value="EnReciclaje">En Reciclaje</option>
-          </select>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content glass-effect">
+            <div class="modal-header border-0">
+                <h5 class="modal-title gradient-text">
+                    <i class="bi bi-pencil-square me-2"></i>Editar Envase
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form id="formEditar" class="needs-validation" novalidate>
+                <div class="modal-body">
+                    <div class="form-floating mb-3">
+                        <input type="text" id="edit_id_envase" class="form-control" readonly>
+                        <label for="edit_id_envase">ID Envase</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select id="edit_tipo" class="form-select" required>
+                            <option value="PET">🔵 PET</option>
+                            <option value="VIDRIO">✨ VIDRIO</option>
+                        </select>
+                        <label for="edit_tipo">Tipo de Envase</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" id="edit_capacidad_ml" class="form-control" required>
+                        <label for="edit_capacidad_ml">Capacidad (ml)</label>
+                    </div>
+                    <div class="form-floating">
+                        <select id="edit_estado" class="form-select" required>
+                            <option value="EnPlanta">🏭 En Planta</option>
+                            <option value="EnVenta">🚚 En Venta</option>
+                            <option value="Devuelto">↩️ Devuelto</option>
+                            <option value="EnReciclaje">♻️ En Reciclaje</option>
+                        </select>
+                        <label for="edit_estado">Estado</label>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-warning">
+                        <i class="bi bi-check2-circle me-2"></i>Actualizar
+                    </button>
+                </div>
+            </form>
         </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-warning">Actualizar</button>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
 
 {% endblock %}
